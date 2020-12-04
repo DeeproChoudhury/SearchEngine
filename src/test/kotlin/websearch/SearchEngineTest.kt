@@ -52,6 +52,7 @@ class SearchEngineTest {
         val searchEngine = SearchEngine(downloadedPages)
         searchEngine.compileIndex()
         val summary = searchEngine.searchFor("news")
+        println(summary)
 
         assertEquals("news", summary.query)
         assertEquals(2, summary.results.size)

@@ -1,8 +1,12 @@
 package websearch
 import org.jsoup.nodes.Document
 
-class URL (val url: String) {
+data class URL (val url: String) {
     override fun toString(): String = url
+
+    fun download():WebPage {
+
+    }
 }
 
 class WebPage (private val webContent: Document) {
