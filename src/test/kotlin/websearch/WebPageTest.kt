@@ -75,4 +75,31 @@ class WebPageTest {
             webPage.extractLinks()
         )
     }
+
+    @Test
+    fun `does not extract links without http or https`() {
+        val html =
+                """
+            <html>
+              <head>
+                <title>Simple Page</title>
+              </head>
+              <body>
+                <p>This is a simple <a href="https://en.wikipedia.org/wiki/HTML">HTML</a> document.</p>
+                <p>But it has four <a href="https://www.w3schools.com/html/html_links.asp">links</a>.</p>
+                <p>One of them <a href="ww1.piratedwebsite.com/illegalstuff"> does not contain http or https</a>.</p>
+              </body>
+            </html>"""
+
+        val htmlDocument: Document = Jsoup.parse(html)
+
+        val webPage = WebPage(htmlDocument)
+        assertEquals(
+                listOf(
+                        URL("https://en.wikipedia.org/wiki/HTML"),
+                        URL("https://www.w3schools.com/html/html_links.asp")
+                ),
+                webPage.extractLinks()
+        )
+    }
 }
