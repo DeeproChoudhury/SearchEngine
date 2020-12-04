@@ -1,22 +1,19 @@
 package websearch
-import org.jsoup.HttpStatusException
-import org.jsoup.nodes.Document
 import org.jsoup.Jsoup.connect
+import org.jsoup.nodes.Document
 
-data class URL (val url: String) {
+data class URL(val url: String) {
     override fun toString(): String = url
 
-    fun download():WebPage {
-            val downloaded = connect(url).get()
-            return WebPage(downloaded)
-
+    fun download(): WebPage {
+        val downloaded = connect(url).get()
+        return WebPage(downloaded)
     }
-
 }
 
-class WebPage (private val webContent: Document) {
+class WebPage(private val webContent: Document) {
     fun extractWords(): List<String> {
-        return webContent.text().split(" ").map{s-> s.replace(".", "").replace(",", "")}. map {it.toLowerCase()}
+        return webContent.text().split(" ").map { s -> s.replace(".", "").replace(",", "") }.map { it.toLowerCase() }
     }
 
     fun extractLinks(): List<URL> {
