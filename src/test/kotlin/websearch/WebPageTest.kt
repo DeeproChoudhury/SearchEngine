@@ -87,7 +87,7 @@ class WebPageTest {
               <body>
                 <p>This is a simple <a href="https://en.wikipedia.org/wiki/HTML">HTML</a> document.</p>
                 <p>But it has four <a href="https://www.w3schools.com/html/html_links.asp">links</a>.</p>
-                <p>One of them <a href="ww1.piratedwebsite.com/illegalstuff"> does not contain http or https</a>.</p>
+                <p>One of which <a href="ww1.piratedwebsite.com/illegalstuff"> does not contain http or https</a>.</p>
               </body>
             </html>"""
 
