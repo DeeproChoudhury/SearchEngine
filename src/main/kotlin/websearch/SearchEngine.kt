@@ -15,7 +15,7 @@ class SearchEngine(val corpus: Map<URL, WebPage>) {
             }
         }
 
-        var grouped = pairurl.groupBy({ s -> s.first }, { p -> p.second })
+        val grouped = pairurl.groupBy({ s -> s.first }, { p -> p.second })
 
         fun rank(listurl: List<URL>): List<SearchResult> {
             val groupedURL = listurl.groupBy { s -> s }
@@ -36,7 +36,7 @@ class SearchResult(val url: URL, val numRefs: Int)
 
 class SearchResultsSummary(val query: String, val results: List<SearchResult>) {
     override fun toString(): String {
-        val printresults = results.map({ s -> "${s.url} - ${s.numRefs} references\n" })
+        val printresults = results.map { s -> "${s.url} - ${s.numRefs} references\n" }
         var stringBuilder = StringBuilder()
         stringBuilder.append("Results for ")
         stringBuilder.append('"')
